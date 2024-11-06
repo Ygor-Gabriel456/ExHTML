@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+        .resultado {
+            font-size: 18pt;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Jogo de Adivinhação</h2>
+
+    <form id="adivinhacaoForm">
+        <label for="palpite">Chute um número (0 a 100):</label>
+        <input type="number" id="palpite" min="0" max="100" required>
+
+        <button type="button" onclick="adivinhar()">Enviar Palpite</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+
+    <script>
+        let numeroAleatorio;
+        let tentativas = 0;
+
+        function iniciarJogo() {
+            numeroAleatorio = Math.round(Math.random() * 100);
+            tentativas = 0;
+            document.getElementById("resultado").innerText = "";
+            document.getElementById("palpite").value = "";
+        }
+
+        function adivinhar() {
+            const palpite = parseInt(document.getElementById("palpite").value);
+            tentativas++;
+
+            if (palpite < numeroAleatorio) {
+                document.getElementById("resultado").innerText = "Tente um número maior.";
+            } else if (palpite > numeroAleatorio) {
+                document.getElementById("resultado").innerText = "Tente um número menor.";
+            } else {
+                document.getElementById("resultado").innerText = `Parabéns! Você acertou em ${tentativas} tentativas.`;
+                if (confirm("Você quer jogar novamente?")) {
+                    iniciarJogo();
+                }
+            }
+        }
+
+        window.onload = iniciarJogo;
+    </script>
+</body>
+</html>

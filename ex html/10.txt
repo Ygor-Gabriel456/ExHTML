@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Fatorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+        .resultado {
+            font-size: 18pt;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora de Fatorial</h2>
+
+    <form>
+        <label for="numeroFatorial">Número:</label>
+        <input type="number" id="numeroFatorial" placeholder="Digite um número" required>
+
+        <button type="button" onclick="calcularFatorial()">Calcular Fatorial</button>
+    </form>
+
+    <label for="resultadoFatorial">Fatorial:</label>
+    <input type="text" id="resultadoFatorial" readonly class="resultado">
+
+    <script>
+        function calcularFatorial() {
+            const numero = parseInt(document.getElementById("numeroFatorial").value);
+            let fatorial = 1;
+
+            for (let i = 2; i <= numero; i++) {
+                fatorial *= i;
+            }
+
+            document.getElementById("resultadoFatorial").value = fatorial;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Área do Retângulo</title>
+</head>
+<body>
+  <h2>Calculadora de Área do Retângulo</h2>
+
+  <form>
+    <label for="base">Base do Retângulo:</label>
+    <input type="number" id="base" step="0.01" placeholder="Digite a base" required><br><br>
+
+    <label for="altura">Altura do Retângulo:</label>
+    <input type="number" id="altura" step="0.01" placeholder="Digite a altura" required><br><br>
+
+    <button type="button" onclick="calcularArea()">Calcular Área</button>
+  </form>
+
+  <textarea id="resultado" rows="2" cols="30" readonly></textarea>
+
+  <script>
+    function calcularArea() {
+      const base = parseFloat(document.getElementById("base").value);
+      const altura = parseFloat(document.getElementById("altura").value);
+
+      const area = base * altura;
+
+      document.getElementById("resultado").value = `A área do retângulo é: ${area.toFixed(2)} unidades quadradas.`;
+    }
+  </script>
+</body>
+</html>
